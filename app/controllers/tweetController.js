@@ -10,7 +10,7 @@ module.exports = {
         user: req.userId,
       });
 
-      res.json(tweet);
+      return res.json(tweet);
     } catch (err) {
       return next(err);
     }

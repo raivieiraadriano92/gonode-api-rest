@@ -1,6 +1,6 @@
 # GoNode - API REST
 
-Design of the third module of the GoNode course
+Project of the third module of the GoNode course
 
 ### Used Technologies
 - NodeJS <https://nodejs.org/>

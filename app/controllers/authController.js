@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const sendMail = require('../services/mailer');
 
 const User = mongoose.model('User');
 
@@ -34,6 +35,17 @@ module.exports = {
       }
 
       const user = await User.create(req.body);
+
+      sendMail({
+        from: 'Raí Vieira Adriano <raivieiraadriano92@gmail.com>',
+        to: user.email,
+        subject: 'Bem-vindo ao RocketTwitter',
+        template: 'auth/register',
+        context: {
+          name: user.name,
+          username: user.username,
+        },
+      });
 
       return res.json({
         user,

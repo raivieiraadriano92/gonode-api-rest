@@ -19,14 +19,27 @@ routes.post('/singup', controllers.authController.singup);
 routes.use(authMiddleware);
 
 /**
+ * Users
+ */
+routes.get('/users/me', controllers.userController.me);
+routes.put('/users', controllers.userController.update);
+routes.get('/feed', controllers.userController.feed);
+
+/**
+ * Follows
+ */
+routes.post('/follow/:id', controllers.followController.create);
+routes.delete('/unfollow/:id', controllers.followController.destroy);
+
+/**
  * Tweets
  */
 routes.post('/tweets', controllers.tweetController.create);
 routes.delete('/tweets/:id', controllers.tweetController.destroy);
 
 /**
- * Users
+ * Likes
  */
-routes.put('/users', controllers.userController.update);
+routes.post('/like/:id', controllers.likeController.toggle);
 
 module.exports = routes;

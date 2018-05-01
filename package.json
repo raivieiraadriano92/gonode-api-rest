@@ -20,9 +20,13 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
+    "dotenv": "^5.0.1",
     "express": "^4.16.3",
+    "handlebars": "^4.0.11",
+    "html-to-text": "^4.0.0",
     "jsonwebtoken": "^8.2.1",
     "mongoose": "^5.0.17",
+    "nodemailer": "^4.6.4",
     "raven": "^2.6.0",
     "require-dir": "^1.0.0"
   },
