@@ -1,0 +1,20 @@
+version: '2'
+
+services:
+  app:
+    image: raivieiraadriano92/node-tools:latest
+    volumes:
+      - .:/usr/src
+    working_dir: /usr/src
+    ports:
+      - 3000:3000
+    tty: true
+    links:
+      - db
+    depends_on:
+      - db
+
+  db:
+    image: mongo
+    ports:
+      - 27017:27017
