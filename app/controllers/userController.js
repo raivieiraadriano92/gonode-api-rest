@@ -16,6 +16,7 @@ module.exports = {
         followingCount: user.following.length,
       });
     } catch (err) {
+      /* istanbul ignore next */
       return next(err);
     }
   },
@@ -35,6 +36,7 @@ module.exports = {
 
       return res.json(tweets);
     } catch (err) {
+      /* istanbul ignore next */
       return next(err);
     }
   },
@@ -51,15 +53,15 @@ module.exports = {
       } = req.body;
 
       if (password && password !== confirmPassword) {
-        return res.status(400).json({ erro: 'Password doesn\'t match' });
+        return res.status(400).json({ error: 'Password doesn\'t match' });
       }
 
       const user = await User.findByIdAndUpdate(id, {
         name,
         username,
       }, {
-          new: true,
-        });
+        new: true,
+      });
 
       if (password) {
         user.password = password;
@@ -68,6 +70,7 @@ module.exports = {
 
       return res.json(user);
     } catch (err) {
+      /* istanbul ignore next */
       return next(err);
     }
   },

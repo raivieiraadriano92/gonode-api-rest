@@ -14,6 +14,7 @@ factory.define('User', mongoose.model('User'), {
   username: factory.seq('User.username', n => `user_${n}`),
   email: factory.seq('User.email', n => `user_${n}@email.com`),
   password: faker.internet.password(),
+  followers: [],
 });
 
 /**
@@ -22,6 +23,7 @@ factory.define('User', mongoose.model('User'), {
 factory.define('Tweet', mongoose.model('Tweet'), {
   content: faker.lorem.sentence(),
   user: factory.assoc('User', '_id'),
+  likes: [],
 });
 
 module.exports = factory;

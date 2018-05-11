@@ -16,5 +16,12 @@ $ docker-compose exec app bash
 $ npm start
 ```
 
+### Run tests
+
+```
+$ docker-compose exec app bash
+$ npm test
+```
+
 ### Suggestion
 Configure in your editor the extensions `EditorConfig` and `Eslint`.

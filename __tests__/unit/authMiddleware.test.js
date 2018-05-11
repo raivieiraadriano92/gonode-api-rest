@@ -17,6 +17,32 @@ describe('Auth middleware', () => {
     expect(response.statusCode).to.be.eq(401);
   });
 
+  it('it should validate if token has error', async () => {
+    const request = httpMock.createRequest({
+      headers: {
+        authorization: 'Bearer',
+      },
+    });
+    const response = httpMock.createResponse();
+
+    await authMiddleware(request, response);
+
+    expect(response.statusCode).to.be.eq(401);
+  });
+
+  it('it should validate if token malformated', async () => {
+    const request = httpMock.createRequest({
+      headers: {
+        authorization: 'teste 123',
+      },
+    });
+    const response = httpMock.createResponse();
+
+    await authMiddleware(request, response);
+
+    expect(response.statusCode).to.be.eq(401);
+  });
+
   it('it should validate if token is valid', async () => {
     const request = httpMock.createRequest({
       headers: {
