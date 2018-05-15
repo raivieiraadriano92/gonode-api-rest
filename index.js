@@ -1,6 +1,4 @@
-const envPath = process.env.NODE_ENV
-  ? `.env.${process.env.NODE_ENV}`
-  : '.env';
+const envPath = process.env.NODE_ENV ? `.env.${process.env.NODE_ENV}` : '.env';
 
 require('dotenv').config({ path: envPath });
 
@@ -23,6 +21,10 @@ app.use('/api', require('./app/routes'));
 
 app.use(Raven.errorHandler());
 
-app.listen(3000);
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => {
+  console.log(`Servidor rodando em ${port}`);
+});
 
 module.exports = app;
